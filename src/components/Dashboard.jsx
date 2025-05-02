@@ -3,7 +3,17 @@ import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { createTheme } from '@mui/material/styles';
+
+//Icons
 import HomeIcon from '@mui/icons-material/Home';
+import InfoIcon from '@mui/icons-material/Info';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import ChatIcon from '@mui/icons-material/Chat';
+import HistoryIcon from '@mui/icons-material/History';
+import CreditCardIcon from '@mui/icons-material/CreditCard';
+import StarIcon from '@mui/icons-material/Star';
+
+
 import { AppProvider } from '@toolpad/core/AppProvider';
 import { DashboardLayout } from '@toolpad/core/DashboardLayout';
 import { useDemoRouter } from '@toolpad/core/internal';
@@ -17,32 +27,32 @@ const NAVIGATION = [
   {
     segment: 'informacion-servicio',
     title: 'Información del servicio',
-    icon: <HomeIcon />,
+    icon: <InfoIcon />,
   },
   {
     segment: 'reservas',
     title: 'Reservas',
-    icon: <HomeIcon />,
+    icon: <CalendarMonthIcon />,
   },
   {
     segment: 'chats',
     title: 'Chats',
-    icon: <HomeIcon />,
+    icon: <ChatIcon />,
   },
   {
     segment: 'historia-servicio',
     title: 'Historial del servicio',
-    icon: <HomeIcon />,
+    icon: <HistoryIcon />,
   },
   {
     segment: 'pagos-facturacion',
     title: 'Pagos y facturación',
-    icon: <HomeIcon />,
+    icon: <CreditCardIcon />,
   },
   {
     segment: 'reseñas-opiniones',
     title: 'Reseñas y opiniones',
-    icon: <HomeIcon />,
+    icon: <StarIcon />,
   },
 ];
 
