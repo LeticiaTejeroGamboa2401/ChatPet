@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { createTheme } from '@mui/material/styles';
+import { Button } from '@mui/material';
 
-//Icons
+// Icons
 import HomeIcon from '@mui/icons-material/Home';
 import InfoIcon from '@mui/icons-material/Info';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
@@ -12,7 +13,7 @@ import ChatIcon from '@mui/icons-material/Chat';
 import HistoryIcon from '@mui/icons-material/History';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
 import StarIcon from '@mui/icons-material/Star';
-
+import SettingsIcon from '@mui/icons-material/Settings';
 
 import { AppProvider } from '@toolpad/core/AppProvider';
 import { DashboardLayout } from '@toolpad/core/DashboardLayout';
@@ -50,7 +51,7 @@ const NAVIGATION = [
     icon: <CreditCardIcon />,
   },
   {
-    segment: 'reseñas-opiniones',
+    segment: 'resenas-opiniones',
     title: 'Reseñas y opiniones',
     icon: <StarIcon />,
   },
@@ -88,70 +89,89 @@ function DemoPageContent({ pathname }) {
   );
 }
 
+
 DemoPageContent.propTypes = {
   pathname: PropTypes.string.isRequired,
 };
 
+function CustomAppTitle() {
+  return (
+    <Typography variant="h6" sx={{ alignContent: 'center', padding: '0 10vh' }}>
+      CHAT PET
+    </Typography>
+  );
+}
 
-
+function SettingsButton() {
+  const router = useDemoRouter();
+  return (
+    <Box sx={{ p: 2 }}>
+      <Button
+        sx={{ justifyContent: 'flex-start', padding: '8px 11.2px' }}
+        startIcon={<SettingsIcon />}
+        fullWidth
+        variant="text"
+        onClick={() => router.navigate('configuracion')}
+      >
+        Configuración
+      </Button>
+    </Box>
+  );
+}
 
 function Dashboard(props) {
-    const { window } = props;
+  const { window } = props;
 
-    const [session, setSession] = React.useState({
-      user: {
-        name: 'Bharat Kashyap',
-        email: 'bharatkashyap@outlook.com',
-        image: 'https://avatars.githubusercontent.com/u/19550456',
+  const [session, setSession] = React.useState({
+    user: {
+      name: 'Bharat Kashyap',
+      email: 'bharatkashyap@outlook.com',
+      image: 'https://avatars.githubusercontent.com/u/19550456',
+    },
+  });
+
+  const authentication = React.useMemo(() => {
+    return {
+      signIn: () => {
+        setSession({
+          user: {
+            name: 'Bharat Kashyap',
+            email: 'bharatkashyap@outlook.com',
+            image: 'https://avatars.githubusercontent.com/u/19550456',
+          },
+        });
       },
-    });
+      signOut: () => {
+        setSession(null);
+      },
+    };
+  }, []);
 
-    const authentication = React.useMemo(() => {
-      return {
-        signIn: () => {
-          setSession({
-            user: {
-              name: 'Bharat Kashyap',
-              email: 'bharatkashyap@outlook.com',
-              image: 'https://avatars.githubusercontent.com/u/19550456',
-            },
-          });
-        },
-        signOut: () => {
-          setSession(null);
-        },
-      };
-    }, []);
+  const router = useDemoRouter('/dashboard');
+  const demoWindow = window !== undefined ? window() : undefined;
 
-    const router = useDemoRouter('/dashboard');
-
-    const demoWindow = window !== undefined ? window() : undefined;
-
-    return (
-      <AppProvider
-        session={session}
-        authentication={authentication}
-        navigation={NAVIGATION}
-        router={router}
-        theme={demoTheme}
-        window={demoWindow}
-      >
-        <DashboardLayout
+  return (
+    <AppProvider
+      session={session}
+      authentication={authentication}
+      navigation={NAVIGATION}
+      router={router}
+      theme={demoTheme}
+      window={demoWindow}
+    >
+      <DashboardLayout
         slots={{
-
+          appTitle: CustomAppTitle,
+          sidebarFooter: SettingsButton,
         }}
-        >
-          <DemoPageContent pathname={router.pathname} />
-        </DashboardLayout>
-      </AppProvider>
-    );
-  }
+      >
+        <DemoPageContent pathname={router.pathname} />
+      </DashboardLayout>
+    </AppProvider>
+  );
+}
 
 Dashboard.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * Remove this when copying and pasting into your project.
-   */
   window: PropTypes.func,
 };
 
