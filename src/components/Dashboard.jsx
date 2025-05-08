@@ -4,8 +4,10 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { createTheme } from '@mui/material/styles';
 import { Avatar, Badge, Button, Divider, IconButton, Stack, TextField, Tooltip } from '@mui/material';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
+
 
 import { Account } from '@toolpad/core/Account';
 import { useSession } from '@toolpad/core/useSession';
@@ -207,46 +209,50 @@ function CustomAppTitle() {
 }
 
 function ToolbarActionsSearch() {
-  // const [anchorEl, setAnchorEl] = React.useState(null);
-  // const open = Boolean(anchorEl);
-
-  // const handleAvatarClick = (event) => {
-  //   setAnchorEl(event.currentTarget);
-  // };
-
-  // const handleClose = () => {
-  //   setAnchorEl(null);
-  // };
+  const theme = useTheme();
+  // Mostrar solo el ícono en pantallas md o más pequeñas
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
-    <Stack direction="row" spacing={4} alignItems="center" sx={{mr:"2vh"}}>
-      <TextField
-        label="Search"
-        variant="outlined"
-        size="small"
-        slotProps={{
-          input: {
+    <Stack direction="row" spacing={4} alignItems="center" sx={{ mr: '2vh' }}>
+      {isSmallScreen ? (
+        <IconButton
+          size="small"
+          sx={{
+            backgroundColor: '#4D724D',
+            color: '#fff',
+            '&:hover': {
+              backgroundColor: '#3d5f3d',
+            },
+            borderRadius: '50%',
+            width: 40,
+            height: 40,
+          }}
+        >
+          <SearchIcon />
+        </IconButton>
+      ) : (
+        <TextField
+          label="Buscar"
+          variant="outlined"
+          size="small"
+          InputProps={{
             endAdornment: (
               <IconButton type="button" aria-label="search" size="small">
                 <SearchIcon />
               </IconButton>
             ),
-            sx: { pr: 0.5 },
-          },
-        }}
-      />
+          }}
+        />
+      )}
+
       <Badge color="success" badgeContent={1} max={999} variant="dot">
         <NotificationsIcon />
       </Badge>
 
-      <Account
-        slots={{
-          popoverContent: UserOrg,
-        }}
-      />
+      <Account slots={{ popoverContent: UserOrg }} />
     </Stack>
   );
-
 }
 
 
@@ -256,7 +262,7 @@ function SidebarFooter({ mini }) {
       variant="caption"
       sx={{ m: 1, whiteSpace: 'nowrap', overflow: 'hidden' }}
     >
-      {mini ? '© CHAT PET' : `© ${new Date().getFullYear()} Made by CHAT PET`}
+      {mini ? '© CHATPET' : `© ${new Date().getFullYear()} Made by CHAT PET`}
     </Typography>
   );
 }

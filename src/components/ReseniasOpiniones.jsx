@@ -21,18 +21,25 @@ export function ResenasOpiniones(){
         <Box sx={{flexGrow: 1, margin: '5vh'}}>
             <Typography
             sx={{mb: 2}}
+            variant='h5'
             >
-                Reseñas y opiniones
+                Reseñas
             </Typography>
-            <Grid container spacing={{xs: 2, md: 4}} columns={{ xs: 4, sm: 8, md: 12}}>
-                <Grid size={12}>
-                    <Item></Item>
-                </Grid>
-                <Grid size={8}>
-                    <Item></Item>
-                </Grid>
-                <Grid size={4}>
-                    <Item></Item>
+            <Grid container spacing={{xs: 2, md: 4}} columns={{ xs: 4, sm: 12, md: 12}}>
+                <Grid size={{xs: 12,sm: 12,md:12}}>
+                    <Box
+                    sx={{
+                        width: '100%',
+                        height: '75vh',
+                        borderRadius: '10px',
+                        alignContent: 'center',
+                        textAlign: 'center'
+                    }}
+                    >
+                        <Typography
+                        variant='h6' 
+                        > PRÓXIMAMENTE</Typography>
+                    </Box>
                 </Grid>
             </Grid>
         </Box>
