@@ -3,7 +3,15 @@ import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { createTheme } from '@mui/material/styles';
-import { Avatar, Button, Divider, IconButton, Stack, TextField, Tooltip } from '@mui/material';
+import { Avatar, Badge, Button, Divider, IconButton, Stack, TextField, Tooltip } from '@mui/material';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+
+import { Account } from '@toolpad/core/Account';
+import { useSession } from '@toolpad/core/useSession';
+import { UserOrg } from './UserOrg';
+import Inicio from './Inicio'
+
 
 // Icons
 import HomeIcon from '@mui/icons-material/Home';
@@ -15,57 +23,58 @@ import CreditCardIcon from '@mui/icons-material/CreditCard';
 import StarIcon from '@mui/icons-material/Star';
 import SettingsIcon from '@mui/icons-material/Settings';
 import SearchIcon from '@mui/icons-material/Search';
+import NotificationsIcon from '@mui/icons-material/Notifications';
 
 import { AppProvider } from '@toolpad/core/AppProvider';
 import { DashboardLayout, ThemeSwitcher } from '@toolpad/core/DashboardLayout';
 import { useDemoRouter } from '@toolpad/core/internal';
 
-const NAVIGATION = [
-  {
-    kind: 'divider', // solo espacio
-  },
-  {
-    segment: 'inicio',
-    title: 'Inicio',
-    icon: <HomeIcon />
-  },
-  {
-    segment: 'informacion-servicio',
-    title: 'Información del servicio',
-    icon: <InfoIcon />,
-  },
-  {
-    segment: 'reservas',
-    title: 'Reservas',
-    icon: <CalendarMonthIcon />,
-  },
-  {
-    segment: 'chats',
-    title: 'Chats',
-    icon: <ChatIcon />,
-  },
-  {
-    segment: 'historia-servicio',
-    title: 'Historial del servicio',
-    icon: <HistoryIcon />,
-  },
-  {
-    segment: 'pagos-facturacion',
-    title: 'Pagos y facturación',
-    icon: <CreditCardIcon />,
-  },
-  {
-    segment: 'resenas-opiniones',
-    title: 'Reseñas y opiniones',
-    icon: <StarIcon />,
-  },
-  {
-    segment: 'configuracion',
-    title: 'Configuracion',
-    icon: <SettingsIcon />,
-  },
+// const NAVIGATION = [
+//   {
+//     kind: 'divider', // solo espacio
+//   },
+//   {
+//     segment: 'inicio',
+//     title: 'Inicio',
+//     icon: <HomeIcon />
+//   },
+//   {
+//     segment: 'informacion-servicio',
+//     title: 'Información del servicio',
+//     icon: <InfoIcon />,
+//   },
+//   {
+//     segment: 'reservas',
+//     title: 'Reservas',
+//     icon: <CalendarMonthIcon />,
+//   },
+//   {
+//     segment: 'chats',
+//     title: 'Chats',
+//     icon: <ChatIcon />,
+//   },
+//   {
+//     segment: 'historia-servicio',
+//     title: 'Historial del servicio',
+//     icon: <HistoryIcon />,
+//   },
+//   {
+//     segment: 'pagos-facturacion',
+//     title: 'Pagos y facturación',
+//     icon: <CreditCardIcon />,
+//   },
+//   {
+//     segment: 'resenas-opiniones',
+//     title: 'Reseñas y opiniones',
+//     icon: <StarIcon />,
+//   },
+//   {
+//     segment: 'configuracion',
+//     title: 'Configuracion',
+//     icon: <SettingsIcon />,
+//   },
 
-];
+// ];
 
 const demoTheme = createTheme({
   // cssVariables: {
@@ -150,6 +159,13 @@ function DemoPageContent({ pathname }) {
   );
 }
 
+function RenderPage ( { pathname }){
+  switch (pathname){
+    case  '/dashboard/inicio':
+      return <Inicio/>
+  }
+}
+
 
 DemoPageContent.propTypes = {
   pathname: PropTypes.string.isRequired,
@@ -167,25 +183,23 @@ function CustomAppTitle() {
 }
 
 function ToolbarActionsSearch() {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+
+  const handleAvatarClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
-    <Stack direction="row">
-      <Tooltip title="Search" enterDelay={1000}>
-        <div>
-          <IconButton
-          type="button"
-          aria-label="search"
-          sx={{
-            display : {xs : 'inline', md: 'none'}
-          }}
-          >
-            <SearchIcon/>
-          </IconButton>
-        </div>
-      </Tooltip>
+    <Stack direction="row" spacing={4} alignItems="center" sx={{mr:"2vh"}}>
       <TextField
-        label = "Search"
+        label="Search"
         variant="outlined"
-        size = "small"
+        size="small"
         slotProps={{
           input: {
             endAdornment: (
@@ -197,9 +211,18 @@ function ToolbarActionsSearch() {
           },
         }}
       />
-      <ThemeSwitcher/>
+      <Badge color="success" badgeContent={1} max={999} variant="dot">
+        <NotificationsIcon />
+      </Badge>
+
+      <Account
+        slots={{
+          popoverContent: UserOrg,
+        }}
+      />
     </Stack>
   );
+
 }
 
 
@@ -209,26 +232,11 @@ function SidebarFooter({ mini }) {
       variant="caption"
       sx={{ m: 1, whiteSpace: 'nowrap', overflow: 'hidden' }}
     >
-      {mini ? '© CHAT PET' : `© ${new Date().getFullYear()} Made with love by MUI`}
+      {mini ? '© CHAT PET' : `© ${new Date().getFullYear()} Made by CHAT PET`}
     </Typography>
   );
 }
-// function SettingsButton() {
-//   const router = useDemoRouter();
-//   return (
-//     <Box sx={{ p: 2 }}>
-//       <Button
-//         sx={{ justifyContent: 'flex-start', padding: '8px 11.2px' }}
-//         startIcon={<SettingsIcon />}
-//         fullWidth
-//         variant="text"
-//         onClick={() => router.navigate('configuracion')}
-//       >
-//         Configuración
-//       </Button>
-//     </Box>
-//   );
-// }
+
 
 function Dashboard(props) {
   const { window } = props;
@@ -341,7 +349,7 @@ function Dashboard(props) {
         slots={{
           appTitle: CustomAppTitle,
           toolbarAccount: ToolbarActionsSearch,
-          // sidebarFooter: {}
+          sidebarFooter: SidebarFooter
         }}
       >
         <DemoPageContent pathname={router.pathname} />
