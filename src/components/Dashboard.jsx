@@ -11,6 +11,13 @@ import { Account } from '@toolpad/core/Account';
 import { useSession } from '@toolpad/core/useSession';
 import { UserOrg } from './UserOrg';
 import Inicio from './Inicio'
+import InformacionServicio from './InformacionServicio';
+import Reservas from './Reservas';
+import Chats from './Chats';
+import HistorialServicio from './HistorialServicio';
+import PagosFacturacion from './PagosFacturacion';
+import ResenasOpiniones from './ReseniasOpiniones';
+import Configuracion from './Configuracion';
 
 
 // Icons
@@ -28,6 +35,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import { AppProvider } from '@toolpad/core/AppProvider';
 import { DashboardLayout, ThemeSwitcher } from '@toolpad/core/DashboardLayout';
 import { useDemoRouter } from '@toolpad/core/internal';
+
 
 // const NAVIGATION = [
 //   {
@@ -161,8 +169,24 @@ function DemoPageContent({ pathname }) {
 
 function RenderPage ( { pathname }){
   switch (pathname){
-    case  '/dashboard/inicio':
+    case  '/inicio':
       return <Inicio/>
+    case '/informacion-servicio':
+      return <InformacionServicio/>
+    case '/reservas':
+      return <Reservas/>
+    case '/chats':
+      return <Chats/>
+    case '/historia-servicio':
+      return <HistorialServicio/>
+    case '/pagos-facturacion':
+      return <PagosFacturacion/>
+    case '/resenas-opiniones':
+      return <ResenasOpiniones/>
+    case '/configuracion':
+      return <Configuracion/>
+    default:
+      return <Typography sx={{margin : '30px'}}>Ruta no encontrada: {pathname}</Typography>
   }
 }
 
@@ -183,16 +207,16 @@ function CustomAppTitle() {
 }
 
 function ToolbarActionsSearch() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
+  // const [anchorEl, setAnchorEl] = React.useState(null);
+  // const open = Boolean(anchorEl);
 
-  const handleAvatarClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+  // const handleAvatarClick = (event) => {
+  //   setAnchorEl(event.currentTarget);
+  // };
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  // const handleClose = () => {
+  //   setAnchorEl(null);
+  // };
 
   return (
     <Stack direction="row" spacing={4} alignItems="center" sx={{mr:"2vh"}}>
@@ -352,7 +376,7 @@ function Dashboard(props) {
           sidebarFooter: SidebarFooter
         }}
       >
-        <DemoPageContent pathname={router.pathname} />
+        <RenderPage pathname={router.pathname} />
       </DashboardLayout>
     </AppProvider>
   );
