@@ -23,7 +23,7 @@ export function Configuracion(){
             sx={{mb: 2}}
             variant='h5'
             >
-                Chats
+                Configuracion
             </Typography>
             <Grid container spacing={{xs: 2, md: 4}} columns={{ xs: 4, sm: 12, md: 12}}>
             <Grid size={{xs: 12,sm: 12,md:12}}>
