@@ -33,12 +33,13 @@ export function ResenasOpiniones(){
                         height: '75vh',
                         borderRadius: '10px',
                         alignContent: 'center',
-                        textAlign: 'center'
+                        textAlign: 'center',
+                        // bgcolor:'#FFFFFF'
                     }}
                     >
                         <Typography
                         variant='h6' 
-                        > PRÓXIMAMENTE</Typography>
+                        > HOLA</Typography>
                     </Box>
                 </Grid>
             </Grid>

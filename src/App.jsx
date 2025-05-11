@@ -5,7 +5,6 @@ import Home from './components/Home'
 import TipoRegistro from './components/TipoRegistro'
 import PrestadorPersonal from './components/InformacionPrestador'
 import ClientePersonal from './components/InformacionCliente'
-import 'bootstrap-icons/font/bootstrap-icons.css';
 
 import Dashboard from './components/Dashboard'
 
