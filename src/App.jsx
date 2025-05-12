@@ -6,7 +6,7 @@ import TipoRegistro from './components/TipoRegistro'
 import PrestadorPersonal from './components/InformacionPrestador'
 import ClientePersonal from './components/InformacionCliente'
 
-import Dashboard from './components/Dashboard'
+import Dashboard from './components/Prestador/Dashboard'
 
 function App() {
 
