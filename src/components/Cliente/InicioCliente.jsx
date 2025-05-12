@@ -132,7 +132,7 @@ export function InicioCliente() {
   return (
     <Box sx={{ flexGrow: 1, margin: '5vh' }}>
       <Grid container spacing={2}>
-          <ButtonAction data={botones} />
+        <ButtonAction data={botones} />
         <Recommendations />
         <PetState />
       </Grid>

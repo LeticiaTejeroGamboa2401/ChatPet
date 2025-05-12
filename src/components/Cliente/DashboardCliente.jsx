@@ -73,8 +73,8 @@ const demoTheme = createTheme({
       styleOverrides: {
         root: {
           '&.Mui-selected': {
-            backgroundColor: '#FFFFFF', // fondo claro cuando está seleccionado
-            color: '#ffffff', // texto oscuro
+            backgroundColor: '#FCEBDD', // fondo claro cuando está seleccionado
+            color: '#2D2D2D', // texto oscuro
           },
           '&.Mui-selected:hover': {
             backgroundColor: '#f8dac7',
