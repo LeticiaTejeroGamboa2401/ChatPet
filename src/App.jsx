@@ -7,6 +7,7 @@ import PrestadorPersonal from './components/InformacionPrestador'
 import ClientePersonal from './components/InformacionCliente'
 
 import Dashboard from './components/Prestador/Dashboard'
+import DashboardCliente from './components/Cliente/DashboardCliente'
 
 function App() {
 
@@ -29,8 +30,11 @@ function App() {
         path="/info-dueño"
         element={<ClientePersonal/>}/>
         <Route
-        path="/dashboard"
+        path="/dashboard-prestador"
         element={<Dashboard/>}/>
+        <Route
+        path="/dashboard-cliente"
+        element={<DashboardCliente/>}/>
       </Routes>
     </>
   )
