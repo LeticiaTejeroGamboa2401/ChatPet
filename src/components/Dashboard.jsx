@@ -309,7 +309,7 @@ function Dashboard(props) {
               kind: 'divider', // solo espacio
             },
             {
-              segment: 'inicio',
+              segment: 'dashboard',
               title: 'Inicio',
               icon: <HomeIcon />
             },
