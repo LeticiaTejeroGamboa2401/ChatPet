@@ -1,5 +1,5 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { nominalTypeHack } from 'prop-types';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { createTheme } from '@mui/material/styles';
@@ -171,7 +171,7 @@ function DemoPageContent({ pathname }) {
 
 function RenderPage ( { pathname }){
   switch (pathname){
-    case  '/inicio':
+    case  '/dashboard':
       return <Inicio/>
     case '/informacion-servicio':
       return <InformacionServicio/>
@@ -199,8 +199,8 @@ DemoPageContent.propTypes = {
 
 function CustomAppTitle() {
   return (
-    <Stack direction="row" alignItems="center" spacing={5} sx={{ml:"3vh"}}>
-      <Avatar alt="Logo" src="/logo.png" sx={{ width: 56, height: 56 }} />
+    <Stack direction="row" alignItems="center" spacing={{xs:0, sm:0, md:5}} sx={{ml:"3vh"}}>
+      <Avatar alt="Logo" src="/logo.png" sx={{ width:{xs:0, sm: 40, md: 56}, height: {xs:0, sm: 40, md: 56} }} />
       <Typography variant="h6" sx={{ textAlign: 'center' }}>
        CHAT PET
       </Typography>
