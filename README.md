@@ -37,11 +37,18 @@ El sistema está distribuido en varios componentes que interactúan entre sí a 
 
 # Interfaces de usuario
 <div align="center">
-<img src="Docs/IU.png" alt="Interfaz de Usuario de Chat Pet" width="600">
+   <img src="Docs/IU.png" alt="Interfaz de Usuario de Chat Pet" width="600">
 </div>
 
 🔗 [Ver diseño en Figma](https://www.figma.com/design/PELtlEl7AhFgfCv5fKukyD/Chat-Pet?node-id=0-1&t=XqNm3S2cBTtcCt1c-1)
 
+
+# Ejemplo de funcionamiento
+<div align="center">
+   <img src="Docs/Funcionamiento.png" alt="Ejemplo de funcionamiento de Chat Pet" width="750">
+</div>
+
+ 🔗 [Video de funcionamiento](https://youtu.be/ugWd8LkkoEU)
 
 
 # 🚀 Cómo ejecutar el proyecto
