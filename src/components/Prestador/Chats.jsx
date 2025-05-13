@@ -91,7 +91,7 @@ function ChatBody() {
 
   React.useEffect(() => {
     // Conectarse al servidor Socket.IO
-    socket.current = io('http://localhost:5000');
+    socket.current = io(import.meta.env.VITE_BACKEND_URL);
 
     // Recibir mensajes del servidor
     socket.current.on('mensaje', (data) => {

@@ -92,7 +92,7 @@ function ChatBody() {
 
   React.useEffect(() => {
     // Conexión con el backend
-    socket.current = io('http://localhost:5000');
+    socket.current = io(import.meta.env.VITE_BACKEND_URL);
 
     // Escuchar mensajes entrantes
     socket.current.on('mensaje', (data) => {
