@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Box, Grid, Button, Card, CardContent, Typography, ToggleButtonGroup, ToggleButton, Avatar } from "@mui/material";
-import WorkIcon from "@mui/icons-material/Work";
 
 const filtrosDisponibles = ["Adiestrador", "Entrenador", "Paseador", "Transportista"];
 
