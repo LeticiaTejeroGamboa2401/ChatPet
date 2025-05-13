@@ -40,28 +40,28 @@ export default function Login() {
   }));
 
 const handleLogin = async () => {
-    try {
-      const res = await axios.post('http://localhost:5000/api/login', {
-        correo,
-        contrasena
-      });
+  try {
+    const res = await axios.post('/api/login', {
+      correo,
+      contrasena
+    });
 
-      const usuario = res.data.usuario;
-      localStorage.setItem('usuario', JSON.stringify(usuario));
+    const usuario = res.data.usuario;
+    localStorage.setItem('usuario', JSON.stringify(usuario));
 
-      if (usuario.rol === 'prestador') {
-        navigate('/dashboard');
-      } else if (usuario.rol === 'cliente') {
-        navigate('/dashboard-cliente');
-      } else {
-        setError('Rol desconocido');
-      }
-
-    } catch (error) {
-      console.error('Error al iniciar sesión:', error);
-      setError(error.response?.data?.error || 'Error desconocido');
+    if (usuario.rol === 'prestador') {
+      navigate('/dashboard');
+    } else if (usuario.rol === 'cliente') {
+      navigate('/dashboard-cliente');
+    } else {
+      setError('Rol desconocido');
     }
-  };
+
+  } catch (error) {
+    console.error('Error al iniciar sesión:', error);
+    setError(error.response?.data?.error || 'Error desconocido');
+  }
+};
 
   return (
     <Container
