@@ -5,7 +5,7 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import { Avatar, Button, List, ListItem, ListItemText, TextField, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
-// import { io } from 'socket.io-client';
+import { io } from 'socket.io-client';
 
 function ChatRecently (){
 
@@ -118,6 +118,7 @@ function ChatBody() {
   return (
     <Grid
       container
+      size={{md:9}}
       direction="column"
       justifyContent="space-between"
       sx={{

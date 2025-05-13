@@ -4,12 +4,9 @@ import Login from './components/Login'
 import TipoRegistro from './components/TipoRegistro'
 import PrestadorPersonal from './components/InformacionPrestador'
 import ClientePersonal from './components/InformacionCliente'
-import Dashboard from './components/prestador/Dashboard'
-import DashboardCliente from './components/cliente/DashboardCliente'
-import 'bootstrap-icons/font/bootstrap-icons.css';
-
 import Dashboard from './components/Prestador/Dashboard'
 import DashboardCliente from './components/Cliente/DashboardCliente'
+
 
 function App() {
 

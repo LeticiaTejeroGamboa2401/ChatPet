@@ -31,23 +31,38 @@ export function MisMascotas(){
                     >
                         Mis mascotas
                     </Typography>
-                    <Button variant='outlined' startIcon={<AddIcon/>} sx={{ fontSize: '15px', borderRadius: 4, color:'#5D8C4C', borderColor:'#5D8C4C' }}>Agregar</Button>
+                    <Button
+                        variant="outlined"
+                        startIcon={<AddIcon />}
+                        sx={{
+                            fontSize: '15px',
+                            borderRadius: 4,
+                            color: '#CF6E1E',
+                            borderColor: '#CF6E1E',
+                            '&:hover': {
+                                backgroundColor: '#E1832B',
+                                color: '#fff',
+                            },
+                        }}
+                    >
+                        Agregar
+                    </Button>
                 </Box>
                 <Grid container spacing={{xs: 2, md: 4}} columns={{ xs: 4, sm: 12, md: 12}}>
                     <Grid size={{xs: 12,sm: 12,md:12}}>
                         <Box
                         sx={{
-                            backgroundColor: '#5D8C4C',
+                            backgroundColor: '#E1832B',
                             width: '100%',
                             height: '5vh',
                             borderRadius: '15px',
                             border: 2,
-                            borderColor:'#5D8C4C',
+                            borderColor: '#CF6E1E',
                             display: 'flex',
                             alignItems: 'center',
-                            px:2,
+                            px: 2,
                             flexWrap: 'wrap',
-                            marginBottom: 2
+                            mb: 2,
                         }}
                         >
                             <Typography sx={{ fontSize: '16px', color: 'white', flex: 1.2, minWidth: '100px' }}>Nombre</Typography>
@@ -60,17 +75,17 @@ export function MisMascotas(){
                         <Box
                             key={rowMascotas.id} // Usa una clave única si tienes
                             sx={{
-                            backgroundImage: 'linear-gradient(to right, #5D8C4C 1%, #FFFFFF 1%)',
-                            width: '100%',
-                            height: '7vh',
-                            borderRadius: '15px',
-                            border: 2,
-                            borderColor:'#5D8C4C',
-                            display: 'flex',
-                            alignItems: 'center',
-                            px:2,
-                            flexWrap: 'wrap',
-                            marginTop: 0.5
+                                backgroundImage: 'linear-gradient(to right, #E1832B 1%, #FFFFFF 1%)',
+                                width: '100%',
+                                height: '7vh',
+                                borderRadius: '15px',
+                                border: 2,
+                                borderColor: '#CF6E1E',
+                                display: 'flex',
+                                alignItems: 'center',
+                                px: 2,
+                                flexWrap: 'wrap',
+                                mt: 0.5,
                             }}
                         >
                             <Box>
