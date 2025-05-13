@@ -48,6 +48,8 @@ El sistema está distribuido en varios componentes que interactúan entre sí a 
    <img src="Docs/Funcionamiento.png" alt="Ejemplo de funcionamiento de Chat Pet" width="750">
 </div>
 
+ 🔗 [Video de funcionamiento](https://youtu.be/ugWd8LkkoEU)
+
 
 # 🚀 Cómo ejecutar el proyecto
 1. Clonar el repositorio
