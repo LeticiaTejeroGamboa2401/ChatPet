@@ -25,12 +25,14 @@ El sistema está distribuido en varios componentes que interactúan entre sí a 
 
 
 # Diagramas del Sistema
-1. Diagrama de Arquitectura General
-2. Diagrama de Secuencia del Proceso
-3. Diagrama de Casos de Uso
-<div align="center">
-<img src="Docs/ActiveChat.png" alt="Diagrama de Caso de Uso de Chat Pet" width="450">
-</div>
+1. Diagrama de Despligue
+   <div align="center">
+      <img src="Docs/DiagramaDespliegue-ChatPet.png" alt="Diagrama de Despliegue de Chat Pet" width="750">
+   </div>   
+2. Diagrama de Casos de Uso
+   <div align="center">
+      <img src="Docs/ActiveChat.png" alt="Diagrama de Caso de Uso de Chat Pet" width="750">
+   </div>
 
 
 # Interfaces de usuario
