@@ -1,10 +1,12 @@
 import { Routes, Route } from 'react-router-dom'
 import './App.css'
 import Login from './components/Login'
-import Home from './components/Home'
 import TipoRegistro from './components/TipoRegistro'
 import PrestadorPersonal from './components/InformacionPrestador'
 import ClientePersonal from './components/InformacionCliente'
+import Dashboard from './components/prestador/Dashboard'
+import DashboardCliente from './components/cliente/DashboardCliente'
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 import Dashboard from './components/Prestador/Dashboard'
 import DashboardCliente from './components/Cliente/DashboardCliente'
@@ -14,9 +16,6 @@ function App() {
   return (
     <>
       <Routes>
-        <Route
-        path="/home"
-        element={<Home/>}/>
         <Route
         path="/login"
         element={<Login/>}/>
@@ -30,7 +29,7 @@ function App() {
         path="/info-dueño"
         element={<ClientePersonal/>}/>
         <Route
-        path="/dashboard-prestador"
+        path="/dashboard"
         element={<Dashboard/>}/>
         <Route
         path="/dashboard-cliente"

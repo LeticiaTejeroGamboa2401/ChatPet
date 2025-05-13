@@ -6,7 +6,7 @@ import { createTheme } from '@mui/material/styles';
 import { Avatar, Badge, Button, Divider, IconButton, Stack, TextField, Tooltip } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
-
+import { useNavigate } from 'react-router-dom';
 
 
 import { Account } from '@toolpad/core/Account';
@@ -143,7 +143,7 @@ DemoPageContent.propTypes = {
 function CustomAppTitle() {
   return (
     <Stack direction="row" alignItems="center" spacing={{xs:0, sm:0, md:5}} sx={{ml:"3vh"}}>
-      <Avatar alt="Logo" src="/logo.png" sx={{ width:{xs:0, sm: 40, md: 56}, height: {xs:0, sm: 40, md: 56} }} />
+      <Avatar alt="Logo" src="/animate.png" sx={{ width:{xs:0, sm: 40, md: 56}, height: {xs:0, sm: 40, md: 56} }} />
       <Typography variant="h6" sx={{ textAlign: 'center' }}>
        CHAT PET
       </Typography>
@@ -214,30 +214,36 @@ function SidebarFooter({ mini }) {
 function DashboardCliente(props) {
   const { window } = props;
 
-  const [session, setSession] = React.useState({
-    user: {
-      name: 'Bharat Kashyap',
-      email: 'bharatkashyap@outlook.com',
-      image: 'https://avatars.githubusercontent.com/u/19550456',
-    },
-  });
-
-  const authentication = React.useMemo(() => {
-    return {
-      signIn: () => {
+  const navigate = useNavigate();
+  
+    const [session, setSession] = React.useState(null);
+  
+    React.useEffect(() => {
+      const storedUser = JSON.parse(localStorage.getItem('usuario'));
+      if (storedUser) {
         setSession({
           user: {
-            name: 'Bharat Kashyap',
-            email: 'bharatkashyap@outlook.com',
-            image: 'https://avatars.githubusercontent.com/u/19550456',
+            name: storedUser.nombre,
+            email: storedUser.correo,
+            image: storedUser.selfie
+              ? `data:image/jpeg;base64,${storedUser.selfie}`
+              : '/powito1.jpeg',
           },
         });
-      },
-      signOut: () => {
-        setSession(null);
-      },
-    };
-  }, []);
+      }
+    }, []);
+  
+  
+    const authentication = React.useMemo(() => {
+      return {
+        signIn: () => {},
+        signOut: () => {
+          localStorage.removeItem('usuario');
+          setSession(null);
+          navigate('/login');
+        },
+      };
+    }, [navigate]);
 
   const router = useDemoRouter('/dashboard-cliente');
   const demoWindow = window !== undefined ? window() : undefined;
