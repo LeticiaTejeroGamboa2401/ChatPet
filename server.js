@@ -10,12 +10,13 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 5000;
+const ipLocal = '10.0.145.19'; 
 
 // Crear servidor HTTP y socket.io
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: 'http://localhost:5173',
+    origin: '*', // Permitir conexión de cualquier pc
     methods: ['GET', 'POST'],
   },
 });
@@ -27,12 +28,12 @@ app.use('/api', userRoutes);
 
 // Conexión a MongoDB
 mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log('Conectado a MongoDB Atlas'))
-  .catch((err) => console.log('Error de conexión a MongoDB Atlas:', err));
+  .then(() => console.log('✅ Conectado a MongoDB Atlas'))
+  .catch((err) => console.error('❌ Error de conexión a MongoDB Atlas:', err));
 
 // Ruta de prueba
 app.get('/', (req, res) => {
-  res.send('¡Conexión exitosa a MongoDB Atlas!');
+  res.send('✅ ¡Servidor funcionando y conectado a MongoDB!');
 });
 
 // Socket.IO
@@ -41,7 +42,7 @@ io.on('connection', (socket) => {
 
   socket.on('mensaje', (data) => {
     console.log('📩 Mensaje recibido:', data);
-    io.emit('mensaje', data); // Enviar a todos los clientes conectados
+    io.emit('mensaje', data);
   });
 
   socket.on('disconnect', () => {
@@ -49,7 +50,6 @@ io.on('connection', (socket) => {
   });
 });
 
-// Iniciar servidor
-server.listen(port, () => {
-  console.log(`🚀 Servidor escuchando en el puerto ${port}`);
+server.listen(port, ipLocal, () => {
+  console.log(`🚀 Servidor escuchando en http://${ipLocal}:${port}`);
 });
