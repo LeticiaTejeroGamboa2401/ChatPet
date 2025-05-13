@@ -120,6 +120,7 @@ function ChatBody() {
   return (
     <Grid
       container
+      size={{md:9}}
       direction="column"
       justifyContent="space-between"
       sx={{
